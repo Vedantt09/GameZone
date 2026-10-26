@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#12d8c5">
+  <title>GameZone | Enter the Arena</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="GameZone home">
+      <span class="brand-mark">G</span>
+      <span>Game<span class="brand-accent">Zone</span></span>
+    </a>
+
+    <div class="search-wrap">
+      <span class="search-icon" aria-hidden="true">⌕</span>
+      <input id="searchInput" type="search"
+        placeholder="Search games..." aria-label="Search games">
+      <kbd>/</kbd>
+    </div>
+
+    <div class="top-actions">
+      <button class="icon-btn" id="randomBtn"
+        title="Play a random game" aria-label="Play a random game">🎲</button>
+      <button class="profile-btn" id="favoritesToggle" aria-pressed="false">
+        ♡ <span>Favorites</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">
+          <span class="live-dot"></span>
+          YOUR NEXT OBSESSION STARTS HERE
+        </div>
+
+        <h1>Less scrolling.<br><span>More playing.</span></h1>
+        <p>Discover your next favorite game. Quick rounds, big wins, endless fun.</p>
+
+        <a class="hero-cta" href="#gameLibrary">
+          Explore games <span>↘</span>
+        </a>
+
+        <div class="hero-stats">
+          <div>
+            <strong id="gameCount">36</strong>
+            <span>games to explore</span>
+          </div>
+          <i></i>
+          <div>
+            <strong>100%</strong>
+            <span>good vibes</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-label="Featured games">
+        <div class="orbit orbit-a"></div>
+        <div class="orbit orbit-b"></div>
+        <div class="float-card float-car">🏎️</div>
+        <div class="float-card float-planet">🪐</div>
+        <div class="float-card float-ghost">👾</div>
+        <div class="hero-center">
+          <span>🎮</span>
+          <b>READY?</b>
+          <small>LET'S PLAY</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="featured-row" aria-label="Featured games">
+      <button class="feature feature-large" data-launch="Neon Drift"
+        style="--cover:linear-gradient(135deg,#ffb21d,#ff4d6d 52%,#5927ff)">
+        <span class="feature-tag">TRENDING NOW</span>
+        <span class="feature-emoji">🏎️</span>
+        <span class="feature-title">NEON DRIFT</span>
+        <span class="feature-sub">Race the impossible</span>
+        <span class="feature-play">PLAY NOW ↗</span>
+      </button>
+
+      <button class="feature feature-mid" data-launch="Monster Dash"
+        style="--cover:linear-gradient(135deg,#5a36ed,#d72dff 55%,#ff5fa2)">
+        <span class="feature-tag">ARCADE HIT</span>
+        <span class="feature-emoji">👾</span>
+        <span class="feature-title">MONSTER DASH</span>
+        <span class="feature-sub">Dodge. Dash. Repeat.</span>
+        <span class="feature-play">PLAY NOW ↗</span>
+      </button>
+
+      <button class="feature feature-mid feature-gold" data-launch="Brain Blitz"
+        style="--cover:linear-gradient(135deg,#ffdf50,#ff8c42 60%,#ff477e)">
+        <span class="feature-tag">BRAIN POWER</span>
+        <span class="feature-emoji">🧠</span>
+        <span class="feature-title">BRAIN BLITZ</span>
+        <span class="feature-sub">Think fast, win big</span>
+        <span class="feature-play">PLAY NOW ↗</span>
+      </button>
+    </section>
+
+    <section class="library-section" id="gameLibrary">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">PICK YOUR PLAYGROUND</div>
+          <h2>Explore the <span>arcade</span></h2>
+        </div>
+
+        <div class="sort-wrap">
+          <label for="sortSelect">Sort by</label>
+          <select id="sortSelect">
+            <option value="popular">Most popular</option>
+            <option value="az">A–Z</option>
+            <option value="new">Recently added</option>
+          </select>
+        </div>
+      </div>
+
+      <nav class="category-bar" id="categoryBar" aria-label="Game categories">
+        <button class="category-chip active" data-category="All">✦ All games</button>
+        <button class="category-chip" data-category="Racing">🏎️ Racing</button>
+        <button class="category-chip" data-category="Puzzle">🧩 Puzzle</button>
+        <button class="category-chip" data-category="Arcade">👾 Arcade</button>
+        <button class="category-chip" data-category="Sports">⚽ Sports</button>
+        <button class="category-chip" data-category="Action">⚡ Action</button>
+        <button class="category-chip" data-category="Casual">🌈 Casual</button>
+      </nav>
+
+      <div class="results-line">
+        <span id="resultsText">Showing all games</span>
+        <button id="clearFilters" class="clear-btn">Clear filters ×</button>
+      </div>
+
+      <div class="game-grid" id="gameGrid"></div>
+
+      <div class="empty-state" id="emptyState" hidden>
+        <div>🕹️</div>
+        <h3>No games found</h3>
+        <p>Try another search or category.</p>
+      </div>
+
+      <button class="load-more" id="loadMore">
+        Show more games <span>↓</span>
+      </button>
+    </section>
+
+    <section class="bottom-banner">
+      <div class="banner-icon">🏆</div>
+      <div>
+        <h3>Challenge accepted?</h3>
+        <p>Pick a game, beat your best score, and do it all over again.</p>
+      </div>
+      <button id="surpriseBtn">Surprise me ✨</button>
+    </section>
+
+    <footer>
+      <a class="brand footer-brand" href="#">
+        <span class="brand-mark">G</span>
+        <span>Game<span class="brand-accent">Zone</span></span>
+      </a>
+      <span>Made for your next “just one more round.”</span>
+      <span>© 2026 GameZone</span>
+    </footer>
+  </main>
+
+  <div class="modal-backdrop" id="gameModal" hidden>
+    <section class="game-modal" role="dialog"
+      aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close game">×</button>
+
+      <div class="modal-kicker">QUICK PLAY</div>
+      <h2 id="modalTitle">Ready to play?</h2>
+      <p id="modalDescription">
+        Tap the target as many times as you can before time runs out.
+      </p>
+
+      <div class="play-stats">
+        <div><small>SCORE</small><strong id="scoreValue">0</strong></div>
+        <div><small>TIME</small><strong id="timeValue">15</strong></div>
+        <div><small>BEST</small><strong id="bestValue">0</strong></div>
+      </div>
+
+      <div class="play-field" id="playField">
+        <div class="play-intro">
+          <span>🎯</span>
+          <p>Ready for a quick challenge?</p>
+          <button id="startGame" class="primary-btn">Start game</button>
+        </div>
+      </div>
+
+      <p class="modal-footnote">
+        This is a mini-game demo built into your site.
+        You can replace it with your own games anytime.
+      </p>
+    </section>
+  </div>
+</body>
+</html>
